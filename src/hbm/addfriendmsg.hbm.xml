@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="servertest.entity">
+	<class name="AddFriendMsg" table="add_friend_msg" >
+		<id column="id" name="id">
+		    <generator class="native"></generator>
+		</id>
+		<property name="userId" column="user_id"></property>
+		<property name="friendId" column="friend_id"></property>
+		<property name="userUsername" column="user_username"></property>
+		<property name="friendUsername" column="friend_username"></property>
+		<property name="msg" column="msg"></property>
+		<property name="status" column="status"></property>
+		<property name="updateDate" column="update_date"></property>
+		<property name="groupId" column="group_id"></property>
+	</class>
+</hibernate-mapping>

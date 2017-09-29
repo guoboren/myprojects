@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- User -->
+    <package name="user" namespace="/user" extends="struts-default,json-default">
+		<action name="login" class="servertest.action.UserAction" method="login">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="logout" class="servertest.action.UserAction" method="logout">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="checkLogin" class="servertest.action.UserAction" method="checkLogin">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="checkDuplication" class="servertest.action.UserAction" method="checkDuplication">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="regist" class="servertest.action.UserAction" method="regist">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="modifypwd" class="servertest.action.UserAction" method="modifypwd">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+    </package>
+    <!-- Group -->
+    <package name="user/group" namespace="/user/group" extends="struts-default,json-default">
+		<action name="addGroup" class="servertest.action.UserAction" method="addGroup">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="reloadGroup" class="servertest.action.UserAction" method="reloadGroup">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="loadFriend" class="servertest.action.UserAction" method="loadFriend">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="delGroup" class="servertest.action.UserAction" method="delGroup">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+    </package>
+    <!-- Friend -->
+    <package name="user/friend" namespace="/user/friend" extends="struts-default,json-default">
+    	<action name="searchUser" class="servertest.action.UserAction" method="searchUser">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="getUserInfo" class="servertest.action.UserAction" method="getUserInfo">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="sendAddMsg" class="servertest.action.UserAction" method="sendAddMsg">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="delFriend" class="servertest.action.UserAction" method="delFriend">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="checkFriend" class="servertest.action.UserAction" method="checkFriend">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+    </package>
+    <!-- Msg -->
+    <package name="user/msg" namespace="/user/msg" extends="struts-default,json-default">
+    	<action name="getMsg" class="servertest.action.UserAction" method="getMsg">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+    	<action name="dealMsg" class="servertest.action.UserAction" method="dealMsg">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="delMsg" class="servertest.action.UserAction" method="delMsg">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="sendTalkMsg" class="servertest.action.UserAction" method="sendTalkMsg">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+		<action name="loadTalkMsgs" class="servertest.action.UserAction" method="loadTalkMsgs">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+    </package>
+    
+</struts>
