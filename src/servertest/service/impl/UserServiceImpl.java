@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 			dataResult.setMsg(userNickname);
 		} else {
 			dataResult.setStatus(1);
-			dataResult.setMsg("ÓÃ»§Ãû»òÃÜÂë´íÎó");
+			dataResult.setMsg("ÃÜÂë´íÎó");
 		}
 
 		return dataResult;
