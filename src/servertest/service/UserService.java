@@ -141,4 +141,10 @@ public interface UserService {
 	 * @return
 	 */
 	public DataResult loadTalkMsgs(int senderId, int recieverId);
+	/**
+	 * 读取我的图片
+	 * @param userId 用户id
+	 * @return
+	 */
+	public DataResult getMyImgs(int userId);
 }

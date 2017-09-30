@@ -19,6 +19,7 @@ import servertest.entity.FriendSearch;
 import servertest.entity.Group;
 import servertest.entity.TalkMsg;
 import servertest.entity.User;
+import servertest.entity.UserFile;
 import servertest.entity.UserInf;
 
 @Repository
@@ -263,20 +264,21 @@ public class UserDao {
 			for (Object object : list) {
 				int friendId = ((Friend) object).getFriendId();
 				int userId = ((Friend) object).getUserId();
-				//删除对方好友
+				// 删除对方好友
 				List<?> list1 = hibernateTemplate
 						.find("from Friend f where f.friendId = " + userId
 								+ " and f.userId = " + friendId);
 				hibernateTemplate.delete((Friend) list1.get(0));
-				//删除聊天记录
+				// 删除聊天记录
 				List<?> list2 = hibernateTemplate
 						.find("from TalkMsg tm where (tm.senderId = " + userId
-								+ " and tm.recieverId = " + friendId + 
-								") or (tm.senderId = " + friendId + " and tm.recieverId = " + userId + ")");
+								+ " and tm.recieverId = " + friendId
+								+ ") or (tm.senderId = " + friendId
+								+ " and tm.recieverId = " + userId + ")");
 				for (Object object2 : list2) {
 					hibernateTemplate.delete((TalkMsg) object2);
 				}
-				//删除己方好友
+				// 删除己方好友
 				hibernateTemplate.delete((Friend) object);
 			}
 
@@ -410,6 +412,17 @@ public class UserDao {
 		boolean result = false;
 		try {
 			hibernateTemplate.delete(f);
+			int userId = f.getUserId();
+			int friendId = f.getFriendId();
+			// 删除聊天记录
+			List<?> list2 = hibernateTemplate
+					.find("from TalkMsg tm where (tm.senderId = " + userId
+							+ " and tm.recieverId = " + friendId
+							+ ") or (tm.senderId = " + friendId
+							+ " and tm.recieverId = " + userId + ")");
+			for (Object object2 : list2) {
+				hibernateTemplate.delete((TalkMsg) object2);
+			}
 			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -485,5 +498,23 @@ public class UserDao {
 						return (List<TalkMsg>) list1;
 					}
 				});
+	}
+
+	/**
+	 * 通过userId查询图片
+	 * 
+	 * @param userId
+	 *            用户id
+	 * @return
+	 */
+	public List<UserFile> getFilesByUserId(int userId) {
+		List<?> list = hibernateTemplate
+				.find("from UserFile uf where uf.userId = " + userId);
+		List<UserFile> files = new ArrayList<UserFile>();
+		for (Object object : list) {
+			UserFile uf = (UserFile) object;
+			files.add(uf);
+		}
+		return files;
 	}
 }

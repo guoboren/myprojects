@@ -32,4 +32,32 @@
   	<param-name>contextConfigLocation</param-name>
   	<param-value>classpath:applicationContext.xml</param-value>
   </context-param>
+  <!-- 上传文件 -->
+  <servlet>
+  	<servlet-name>uploadFileServlet</servlet-name>
+  	<servlet-class>servertest.servlet.UploadFileServlet</servlet-class>
+  	<init-param>
+  		<param-name>filePosition</param-name>
+<!--   		<param-value>E:/servertest-file</param-value> -->
+  		<param-value>C:/Users/Administrator/Desktop/file</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>uploadFileServlet</servlet-name>
+  	<url-pattern>/upload.file</url-pattern>
+  </servlet-mapping>
+  <!-- 删除文件 -->
+  <servlet>
+  	<servlet-name>deleteFileServlet</servlet-name>
+  	<servlet-class>servertest.servlet.DeleteFileServlet</servlet-class>
+  	<init-param>
+  		<param-name>filePosition</param-name>
+  		<!-- <param-value>E:/servertest-file</param-value> -->
+  		<param-value>C:/Users/Administrator/Desktop/file</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>deleteFileServlet</servlet-name>
+  	<url-pattern>/delete.file</url-pattern>
+  </servlet-mapping>
 </web-app>

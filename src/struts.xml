@@ -113,5 +113,13 @@
 			</result>
 		</action>
     </package>
+    <!-- File -->
+    <package name="user/file" namespace="/user/file" extends="struts-default,json-default">
+    	<action name="getMyImgs" class="servertest.action.UserAction" method="getMyImgs">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
+    </package>
     
 </struts>

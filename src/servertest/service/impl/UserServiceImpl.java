@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService {
 		DataResult dataResult = new DataResult();
 		if (pwd != null && pwd.equals(UserUtil.convertStringToMD5(password))) {
 			String userNickname = userDao.getUserInfoByUserId(user.getId()).getNickname();
-			System.out.println(userNickname);
 			dataResult.setData(user);
 			dataResult.setStatus(0);
 			dataResult.setMsg(userNickname);
@@ -325,6 +324,14 @@ public class UserServiceImpl implements UserService {
 		DataResult dataResult = new DataResult();
 		dataResult.setData(userDao.loadTalkMsgs(senderId, recieverId));
 		dataResult.setStatus(0);
+		return dataResult;
+	}
+
+	@Override
+	public DataResult getMyImgs(int userId) {
+		DataResult dataResult = new DataResult();
+		dataResult.setStatus(0);
+		dataResult.setData(userDao.getFilesByUserId(userId));
 		return dataResult;
 	}
 

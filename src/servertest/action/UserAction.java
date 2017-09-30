@@ -335,6 +335,16 @@ public class UserAction {
 		return "success";
 		
 	}
+	/**
+	 * 读取用户的图片
+	 * @return
+	 */
+	public String getMyImgs(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String userId = request.getParameter("userId");
+		dataResult = userService.getMyImgs(Integer.parseInt(userId));
+		return "success";
+	}
 	
 	
 
