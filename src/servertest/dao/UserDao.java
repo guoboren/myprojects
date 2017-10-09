@@ -19,8 +19,9 @@ import servertest.entity.FriendSearch;
 import servertest.entity.Group;
 import servertest.entity.TalkMsg;
 import servertest.entity.User;
-import servertest.entity.UserFile;
+import servertest.entity.UserImg;
 import servertest.entity.UserInf;
+import servertest.entity.UserNetDiskFile;
 
 @Repository
 public class UserDao {
@@ -507,13 +508,30 @@ public class UserDao {
 	 *            用户id
 	 * @return
 	 */
-	public List<UserFile> getFilesByUserId(int userId) {
+	public List<UserImg> getImgsByUserId(int userId) {
 		List<?> list = hibernateTemplate
 				.find("from UserFile uf where uf.userId = " + userId);
-		List<UserFile> files = new ArrayList<UserFile>();
+		List<UserImg> files = new ArrayList<UserImg>();
 		for (Object object : list) {
-			UserFile uf = (UserFile) object;
+			UserImg uf = (UserImg) object;
 			files.add(uf);
+		}
+		return files;
+	}
+	/**
+	 * 通过userId查询网盘文件
+	 * 
+	 * @param userId
+	 *            用户id
+	 * @return
+	 */
+	public List<UserNetDiskFile> getFilesByUserId(int userId) {
+		List<?> list = hibernateTemplate
+				.find("from UserNetDiskFile udf where udf.userId = " + userId);
+		List<UserNetDiskFile> files = new ArrayList<UserNetDiskFile>();
+		for (Object object : list) {
+			UserNetDiskFile udf = (UserNetDiskFile) object;
+			files.add(udf);
 		}
 		return files;
 	}

@@ -120,6 +120,11 @@
 				<param name="root">dataResult</param>
 			</result>
 		</action>
+    	<action name="getMyFiles" class="servertest.action.UserAction" method="getMyFiles">
+			<result name="success" type="json">
+				<param name="root">dataResult</param>
+			</result>
+		</action>
     </package>
     
 </struts>

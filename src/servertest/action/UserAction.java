@@ -345,6 +345,16 @@ public class UserAction {
 		dataResult = userService.getMyImgs(Integer.parseInt(userId));
 		return "success";
 	}
+	/**
+	 * 读取用户的网盘文件
+	 * @return
+	 */
+	public String getMyFiles(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String userId = request.getParameter("userId");
+		dataResult = userService.getMyFiles(Integer.parseInt(userId));
+		return "success";
+	}
 	
 	
 

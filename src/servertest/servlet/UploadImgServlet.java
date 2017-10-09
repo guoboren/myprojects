@@ -21,9 +21,8 @@ import org.springframework.transaction.annotation.Transactional;
 import servertest.dao.FileDao;
 import servertest.entity.DataResult;
 import servertest.entity.UserImg;
-import servertest.entity.UserNetDiskFile;
 
-public class UploadFileServlet extends HttpServlet {
+public class UploadImgServlet extends HttpServlet {
 	
 	private FileDao fileDao = new ClassPathXmlApplicationContext("applicationContext.xml").getBean(FileDao.class);
 	
@@ -58,23 +57,22 @@ public class UploadFileServlet extends HttpServlet {
 		
 		DiskFileItemFactory factory=new DiskFileItemFactory();
 		ServletFileUpload upload=new ServletFileUpload(factory);
-		upload.setHeaderEncoding("UTF-8");
 		try {
 			String newName = null;
 		    List<FileItem> items=upload.parseRequest(request);
 		    for(FileItem item : items){
-				UserNetDiskFile udf = new UserNetDiskFile();
+				UserImg uf = new UserImg();
 		        if(!item.isFormField()){
 		            String fileName = item.getName();
-		            System.out.println(fileName);
 		            String name = fileName.split("\\.")[0];
 		            String extend = fileName.split("\\.")[1];
 		            newName = name + "~~" + System.currentTimeMillis() + "." + extend;
-		            item.write(new File(request.getServletContext().getInitParameter("netdiskFilePosition"), newName));
-		            udf.setFileName(newName);
-		            udf.setUserId(Integer.parseInt(item.getFieldName()));
+		            System.out.println(newName);
+		            item.write(new File(request.getServletContext().getInitParameter("filePosition"), newName));
+		            uf.setFileName(newName);
+		            uf.setUserId(Integer.parseInt(item.getFieldName()));
 		        }
-		        udf.setId((Integer)fileDao.insertUserFile(udf));
+		        uf.setId((Integer)fileDao.insertUserImg(uf));
 		    }
 		    return true;
 		} catch (Exception e) {

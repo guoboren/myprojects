@@ -331,6 +331,13 @@ public class UserServiceImpl implements UserService {
 	public DataResult getMyImgs(int userId) {
 		DataResult dataResult = new DataResult();
 		dataResult.setStatus(0);
+		dataResult.setData(userDao.getImgsByUserId(userId));
+		return dataResult;
+	}
+	@Override
+	public DataResult getMyFiles(int userId) {
+		DataResult dataResult = new DataResult();
+		dataResult.setStatus(0);
 		dataResult.setData(userDao.getFilesByUserId(userId));
 		return dataResult;
 	}

@@ -147,4 +147,10 @@ public interface UserService {
 	 * @return
 	 */
 	public DataResult getMyImgs(int userId);
+	/**
+	 * 读取我的网盘文件
+	 * @param userId 用户id
+	 * @return
+	 */
+	public DataResult getMyFiles(int userId);
 }

@@ -16,7 +16,7 @@ import net.sf.json.JSONObject;
 import servertest.dao.FileDao;
 import servertest.entity.DataResult;
 
-public class DeleteFileServlet extends HttpServlet {
+public class DeleteImgServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private FileDao fileDao = new ClassPathXmlApplicationContext(
@@ -25,9 +25,7 @@ public class DeleteFileServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		String fileName = request.getParameter("fileName");
-		System.out.println(fileName);
 		String userId = request.getParameter("userId");
 		DataResult result = new DataResult();
 		if (deleteFile(request, Integer.parseInt(userId), fileName)) {
@@ -51,9 +49,9 @@ public class DeleteFileServlet extends HttpServlet {
 	 */
 	@Transactional
 	private boolean deleteFile(HttpServletRequest request, int userId, String fileName) {
-		File file = new File(request.getServletContext().getInitParameter("netdiskFilePosition") + "/"
+		File file = new File(request.getServletContext().getInitParameter("filePosition") + "/"
 				+ fileName);
-		if (fileDao.deleteFileByUserIdAndFileName(userId, fileName)) {
+		if (fileDao.deleteImgByUserIdAndFileName(userId, fileName)) {
 			if (file.exists()) {
 				file.delete();
 				return true;

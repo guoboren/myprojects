@@ -9,6 +9,23 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <!-- 全局常量 -->
+  <!-- 图片路径 -->
+  <context-param>
+  	<param-name>filePosition</param-name>
+  	<param-value>E:/servertest-file</param-value>
+  	<!-- <param-value>C:/files</param-value> -->
+  </context-param>
+  <!-- 网盘路径 -->
+  <context-param>
+  	<param-name>netdiskFilePosition</param-name>
+  	<param-value>E:/servertest-file/netdiskfiles</param-value>
+  	<!-- <param-value>C:/files/netdiskfiles</param-value> -->
+  </context-param>
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
   <filter>
   	<filter-name>requestFilter</filter-name>
   	<filter-class>servertest.filter.RequestFilter</filter-class>
@@ -28,36 +45,49 @@
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <context-param>
-  	<param-name>contextConfigLocation</param-name>
-  	<param-value>classpath:applicationContext.xml</param-value>
-  </context-param>
+  <!-- 上传图片 -->
+  <servlet>
+  	<servlet-name>uploadImgServlet</servlet-name>
+  	<servlet-class>servertest.servlet.UploadImgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>uploadImgServlet</servlet-name>
+  	<url-pattern>/uploadImg.file</url-pattern>
+  </servlet-mapping>
+  <!-- 删除图片 -->
+  <servlet>
+  	<servlet-name>deleteImgServlet</servlet-name>
+  	<servlet-class>servertest.servlet.DeleteImgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>deleteImgServlet</servlet-name>
+  	<url-pattern>/deleteImg.file</url-pattern>
+  </servlet-mapping>
+  <!-- 删除图片 -->
+  <servlet>
+  	<servlet-name>deleteFileServlet</servlet-name>
+  	<servlet-class>servertest.servlet.DeleteFileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>deleteFileServlet</servlet-name>
+  	<url-pattern>/deleteFile.file</url-pattern>
+  </servlet-mapping>
   <!-- 上传文件 -->
   <servlet>
   	<servlet-name>uploadFileServlet</servlet-name>
   	<servlet-class>servertest.servlet.UploadFileServlet</servlet-class>
-  	<init-param>
-  		<param-name>filePosition</param-name>
-<!--   		<param-value>E:/servertest-file</param-value> -->
-  		<param-value>C:/Users/Administrator/Desktop/file</param-value>
-  	</init-param>
   </servlet>
   <servlet-mapping>
   	<servlet-name>uploadFileServlet</servlet-name>
-  	<url-pattern>/upload.file</url-pattern>
+  	<url-pattern>/uploadFile.file</url-pattern>
   </servlet-mapping>
-  <!-- 删除文件 -->
+  <!-- 下载文件 -->
   <servlet>
-  	<servlet-name>deleteFileServlet</servlet-name>
-  	<servlet-class>servertest.servlet.DeleteFileServlet</servlet-class>
-  	<init-param>
-  		<param-name>filePosition</param-name>
-  		<!-- <param-value>E:/servertest-file</param-value> -->
-  		<param-value>C:/Users/Administrator/Desktop/file</param-value>
-  	</init-param>
+  	<servlet-name>downloadFileServlet</servlet-name>
+  	<servlet-class>servertest.servlet.DownloadFileServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>deleteFileServlet</servlet-name>
-  	<url-pattern>/delete.file</url-pattern>
+  	<servlet-name>downloadFileServlet</servlet-name>
+  	<url-pattern>/download.file</url-pattern>
   </servlet-mapping>
 </web-app>

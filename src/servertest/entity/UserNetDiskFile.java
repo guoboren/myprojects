@@ -1,6 +1,6 @@
 package servertest.entity;
 
-public class UserFile {
+public class UserNetDiskFile {
 	private int id;
 	private int userId;
 	private String fileName;
