@@ -510,7 +510,7 @@ public class UserDao {
 	 */
 	public List<UserImg> getImgsByUserId(int userId) {
 		List<?> list = hibernateTemplate
-				.find("from UserFile uf where uf.userId = " + userId);
+				.find("from UserImg ui where ui.userId = " + userId);
 		List<UserImg> files = new ArrayList<UserImg>();
 		for (Object object : list) {
 			UserImg uf = (UserImg) object;

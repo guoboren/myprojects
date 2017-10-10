@@ -341,8 +341,12 @@ public class UserAction {
 	 */
 	public String getMyImgs(){
 		HttpServletRequest request = ServletActionContext.getRequest();
+		try{
 		String userId = request.getParameter("userId");
 		dataResult = userService.getMyImgs(Integer.parseInt(userId));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return "success";
 	}
 	/**
